@@ -1,0 +1,8 @@
+.home__img{
+    width: 300px;
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+    transform: translate(450px,-330px);
+}
