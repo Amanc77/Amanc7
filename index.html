@@ -39,7 +39,7 @@
             <!-- HOME -->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Aman</span><br> Web Developer</h1>
+                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Aman</span><br>Frontend Developer</h1>
 
                     <a href="#" class="button">Contact</a>
                 </div>
@@ -177,12 +177,20 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Submit" class="contact__button button">
+                    <form  action="https://api.web3forms.com/submit" method="post" id="form" class="contact__form" reset();>
+                        <input type="hidden" name="access_key" value="b45454fb-6dd6-419e-99d3-cb670e7bd880">
+
+                        <input type="text" name="name" placeholder="Name" class="contact__input">
+                        <input type="mail" name="email" placeholder="Email" class="contact__input">
+                        <textarea name="message" id="" placeholder="Write your thoughts:-" cols="0" rows="10" class="contact__input"></textarea>
+                     <!-- //   <input type="button" value="Submit" class="contact__button button"> -->
+                        <div id="result"></div>
+
+                        <button type="submit" class="contact__button button">Submit Form</button>
+
                     </form>
+
+                    <script src="https://web3forms.com/client/script.js" async defer></script>
                 </div>
             </section>
         </main>

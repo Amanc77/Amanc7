@@ -41,6 +41,9 @@ const scrollActive = () =>{
 }
 window.addEventListener('scroll', scrollActive)
 
+// for email
+
+
 /*===== SCROLL REVEAL ANIMATION =====*/
 const sr = ScrollReveal({
     origin: 'top',
