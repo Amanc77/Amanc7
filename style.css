@@ -69,6 +69,16 @@ img {
   height: auto;
   display: block;
 }
+video {
+  max-width: 100%;
+  height: 92%;
+  display: block;
+  z-index: -1;
+}
+
+.vidio1{
+  scale: 5;
+}
 
 /*===== CLASS CSS ===== */
 .section-title {
