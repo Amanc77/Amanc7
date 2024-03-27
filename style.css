@@ -48,6 +48,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
+  overflow-x: hidden;
 }
 
 h1, h2, p {
@@ -213,6 +214,9 @@ video {
   margin-bottom: var(--mb-2);
   font-size: 1.5rem;
   color: var(--second-color);
+  scale: 2.5;
+  margin-left: 29px;
+  color: rgb(38, 10, 132);
 }
 .home__social-icon:hover {
   color: var(--first-color);
@@ -368,11 +372,19 @@ video {
 }
 .footer__social {
   margin-bottom: var(--mb-4);
+  scale: 1.5;
+
 }
 .footer__icon {
   font-size: 1.5rem;
   color: #fff;
   margin: 0 var(--mb-2);
+  color: rgb(77, 244, 244);
+  
+}
+
+.footer__icon:hover {
+  color: rgb(0, 255, 123)
 }
 .footer__copy {
   font-size: var(--smaller-font-size);
