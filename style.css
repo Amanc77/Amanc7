@@ -120,7 +120,7 @@ video {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #fff;
+  background-color: #f6f6f6;
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
 }
 
@@ -149,7 +149,7 @@ video {
 }
 .nav__link {
   position: relative;
-  color: #fff;
+  color: #ffffff;
 }
 .nav__link:hover {
   position: relative;
@@ -231,7 +231,7 @@ video {
 }
 
 /*BUTTONS*/
-.button {
+#button2 {
   display: inline-block;
   background-color: var(--first-color);
   color: #fff;
