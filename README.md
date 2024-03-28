@@ -4,7 +4,7 @@ Welcome to my portfolio website! This is where I showcase my projects, skills, a
 
 ## About Me
 
-I am [Aman Kumar],  I am passionate about [Frontend Developer] and enjoy creating [Real life Project].
+I am Aman Kumar,  I am passionate about Frontend Developer and enjoy creating Real life Project.
 
 ## Features
 
