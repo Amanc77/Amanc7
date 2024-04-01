@@ -25,6 +25,9 @@
   --z-back: -10;
   --z-fixed: 100;
 }
+html{
+  overflow-x: hidden;
+}
 @media screen and (min-width: 968px) {
   :root {
     --big-font-size: 3.5rem;
@@ -135,13 +138,17 @@ video {
   font-weight: var(--font-semi);
 }
 @media screen and (max-width: 767px) {
+  boby{
+  overflow-x: hidden;
+    
+  }
   .nav__menu {
     position: fixed;
     top: var(--header-height);
     right: -100%;
-    width: auto%;
+    width: 80%;
     height: 100%;
-    padding: 2rem;
+    padding: 2.2rem;
     background-color: var(--second-color);
     transition: 0.5s;
     overflow-x: hidden;
