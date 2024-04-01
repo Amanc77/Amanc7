@@ -31,6 +31,7 @@
     --h2-font-size: 2rem;
     --normal-font-size: 1rem;
     --smaller-font-size: .875rem;
+    --overflow-x: hidden;
   }
 }
 
@@ -143,6 +144,7 @@ video {
     padding: 2rem;
     background-color: var(--second-color);
     transition: 0.5s;
+    overflow-x: hidden;
   }
 }
 .nav__item {
@@ -400,6 +402,7 @@ video {
   }
 }
 @media screen and (min-width: 576px) {
+  
   .home {
     padding: 4rem 0 2rem;
   }
@@ -507,4 +510,5 @@ video {
   .home__img {
     width: 450px;
   }
+
 }
