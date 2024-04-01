@@ -139,7 +139,7 @@ video {
     position: fixed;
     top: var(--header-height);
     right: -100%;
-    width: auto;
+    width: auto%;
     height: 100%;
     padding: 2rem;
     background-color: var(--second-color);
