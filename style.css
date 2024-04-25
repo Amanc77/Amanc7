@@ -316,16 +316,16 @@ video {
   z-index: var(--z-back);
 }
 .skills__html {
-  width: 95%;
+  width: 90%;
 }
 .skills__css {
-  width: 70%;
+  width: 88%;
 }
 .skills__js {
-  width: 65%;
+  width: 86%;
 }
 .skills__ux {
-  width: 85%;
+  width: 90%;
 }
 .skills__img {
   border-radius: 0.5rem;
