@@ -57,3 +57,17 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 200}); 
 sr.reveal('.home__social-icon',{ interval: 100}); 
 sr.reveal('.skills__data, .work__img, .contact__input',{interval: 50}); 
+
+// Function to open link in a new tab
+function openInNewTab(event) {
+    event.preventDefault();
+    window.open(event.currentTarget.href, '_blank');
+}
+
+// Add event listener after the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    const button2 = document.getElementById('button2');
+    if (button2) {
+        button2.addEventListener('click', openInNewTab);
+    }
+});
