@@ -14,8 +14,8 @@
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
-  --normal-font-size: .938rem;
-  --smaller-font-size: .75rem;
+  --normal-font-size: 0.938rem;
+  --smaller-font-size: 0.75rem;
   /*===== Margenes =====*/
   --mb-2: 1rem;
   --mb-4: 2rem;
@@ -25,7 +25,7 @@
   --z-back: -10;
   --z-fixed: 100;
 }
-html{
+html {
   overflow-x: hidden;
 }
 @media screen and (min-width: 968px) {
@@ -33,13 +33,15 @@ html{
     --big-font-size: 3.5rem;
     --h2-font-size: 2rem;
     --normal-font-size: 1rem;
-    --smaller-font-size: .875rem;
+    --smaller-font-size: 0.875rem;
     --overflow-x: hidden;
   }
 }
 
 /*===== BASE =====*/
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
@@ -55,7 +57,9 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
   margin: 0;
 }
 
@@ -81,7 +85,7 @@ video {
   z-index: -1;
 }
 
-.vidio1{
+.vidio1 {
   scale: 5;
 }
 
@@ -138,9 +142,8 @@ video {
   font-weight: var(--font-semi);
 }
 @media screen and (max-width: 767px) {
-  boby{
-  overflow-x: hidden;
-    
+  boby {
+    overflow-x: hidden;
   }
   .nav__menu {
     position: fixed;
@@ -273,8 +276,6 @@ video {
   border-radius: 0.5rem;
 }
 
-
-
 /* ===== SKILLS =====*/
 .skills__container {
   row-gap: 2rem;
@@ -382,18 +383,16 @@ video {
 .footer__social {
   margin-bottom: var(--mb-4);
   scale: 1.5;
-
 }
 .footer__icon {
   font-size: 1.5rem;
   color: #fff;
   margin: 0 var(--mb-2);
   color: rgb(77, 244, 244);
-  
 }
 
 .footer__icon:hover {
-  color: rgb(0, 255, 123)
+  color: rgb(0, 255, 123);
 }
 .footer__copy {
   font-size: var(--smaller-font-size);
@@ -409,7 +408,6 @@ video {
   }
 }
 @media screen and (min-width: 576px) {
-  
   .home {
     padding: 4rem 0 2rem;
   }
@@ -517,5 +515,60 @@ video {
   .home__img {
     width: 450px;
   }
+}
 
+.nav__link {
+  color: #333;
+  transition: color 0.3s ease;
+}
+.nav__link:hover,
+.nav__link.active-link {
+  color: #007bff;
+}
+.dd label {
+  background: #ccc;
+  transition: background 0.3s ease;
+}
+.dd label:after {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+.dark-mode header.l-header {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+.dark-mode .nav__link {
+  color: #bbb;
+}
+.dark-mode .nav__link:hover,
+.dark-mode .nav__link.active-link {
+  color: #4caf50;
+}
+.dark-mode .dd label {
+  background: #4caf50;
+}
+.dark-mode .dd label:after {
+  background: #333;
+}
+
+/* Styling for the toggle icon */
+.dark-mode-toggle {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dark-mode-toggle .toggle-label {
+  font-size: 1.5rem;
+  color: #333; /* Default light mode */
+  transition: color 0.3s ease;
+}
+
+.dark-mode .dark-mode-toggle .toggle-label {
+  color: #fff; /* Dark mode */
 }
