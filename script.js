@@ -1,91 +1,106 @@
-const showMenu = (toggleId, navId) => {
-  const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId);
+const navMenu = document.getElementById("nav-menu");
+const navToggle = document.getElementById("nav-toggle");
+const navClose = document.getElementById("nav-close");
 
-  if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("show");
-    });
-  }
-};
+// Menu show
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.add("show-menu");
+  });
+}
 
-showMenu("nav-toggle", "nav-menu");
+if (navClose) {
+  navClose.addEventListener("click", () => {
+    navMenu.classList.remove("show-menu");
+  });
+}
 
+// Close menu when clicking on a nav link
 const navLink = document.querySelectorAll(".nav__link");
-
 function linkAction() {
   const navMenu = document.getElementById("nav-menu");
-  navMenu.classList.remove("show");
+  navMenu.classList.remove("show-menu");
 }
 navLink.forEach((n) => n.addEventListener("click", linkAction));
 
-/* SCROLL SECTIONS ACTIVE LINK */
-const sections = document.querySelectorAll("section[id]");
+// Animation in the qualifications section
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
 
+const elements = document.querySelectorAll(".hidden");
+elements.forEach((element) => observer.observe(element));
+
+// Scroll active link
+const sections = document.querySelectorAll("section[id]");
 const scrollActive = () => {
-  const scrollDown = window.scrollY;
+  const scrollY = window.scrollY;
 
   sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight,
-      sectionTop = current.offsetTop - 58,
-      sectionId = current.getAttribute("id"),
-      sectionsClass = document.querySelector(
-        ".nav__menu a[href*=" + sectionId + "]"
-      );
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 50;
+    let sectionId = current.getAttribute("id");
 
-    if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
-      sectionsClass.classList.add("active-link");
-    } else {
-      sectionsClass.classList.remove("active-link");
-    }
+    document
+      .querySelector(".nav__menu a[href*=" + sectionId + "]")
+      ?.classList.toggle(
+        "active-link",
+        scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
+      );
   });
 };
 window.addEventListener("scroll", scrollActive);
 
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
-  origin: "top",
-  distance: "60px",
-  duration: 1500,
-  delay: 100,
-  //     reset: true
-});
+// Change header on scroll
+function scrollHeader() {
+  const header = document.getElementById("header");
+  if (window.scrollY >= 80) header.classList.add("scroll-header");
+  else header.classList.remove("scroll-header");
+}
+window.addEventListener("scroll", scrollHeader);
 
-sr.reveal(".home__data, .about__img, .skills__subtitle, .skills__text", {});
-sr.reveal(".home__img, .about__subtitle, .about__text, .skills__img", {
-  delay: 200,
-});
-sr.reveal(".home__social-icon", { interval: 100 });
-sr.reveal(".skills__data, .work__img, .contact__input", { interval: 50 });
+// Show scroll top button
+function scrollUp() {
+  const scrollTop = document.getElementById("scrollup");
+  if (window.scrollY >= 560) scrollTop.classList.add("show-scroll");
+  else scrollTop.classList.remove("show-scroll");
+}
+window.addEventListener("scroll", scrollUp);
 
-// Function to open link in a new tab
-function openInNewTab(event) {
-  event.preventDefault();
-  window.open(event.currentTarget.href, "_blank");
+// Change theme
+const themeButton = document.getElementById("theme-button");
+const circle = document.querySelector("#theme-button .circle");
+
+if (themeButton) {
+  themeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    themeButton.classList.toggle("active");
+    circle.classList.toggle("dark");
+  });
+
+  document.body.classList.add("dark-theme");
+  themeButton.classList.toggle("active");
 }
 
-// Add event listener after the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", (event) => {
-  const button2 = document.getElementById("button2");
-  if (button2) {
-    button2.addEventListener("click", openInNewTab);
-  }
-});
+// Contact form submission
+const form = document.getElementById("form");
+if (form) {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const darkModeToggle = document.getElementById("dark-mode");
-  const darkModeIcon = document.getElementById("dark-mode-icon");
-
-  darkModeToggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode", darkModeToggle.checked);
-
-    // Update the icon dynamically
-    if (darkModeToggle.checked) {
-      darkModeIcon.classList.remove("fa-sun");
-      darkModeIcon.classList.add("fa-moon");
-    } else {
-      darkModeIcon.classList.remove("fa-moon");
-      darkModeIcon.classList.add("fa-sun");
-    }
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert("Message sent successfully!");
+        form.reset();
+      })
+      .catch((error) => console.error("Error:", error));
   });
-});
+}
