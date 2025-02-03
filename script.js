@@ -104,23 +104,3 @@ if (form) {
       .catch((error) => console.error("Error:", error));
   });
 }
-
-let lastScrollTop = 0;
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-  let scrollTop = window.scrollY || document.documentElement.scrollTop;
-  let isMobile = window.innerWidth <= 768; // Adjust this value as needed
-
-  if (isMobile) {
-    if (scrollTop > lastScrollTop) {
-      header.classList.add("hidden"); // Hide header on scroll down
-    } else if (scrollTop === 0) {
-      header.classList.remove("hidden"); // Show header only when at the top
-    }
-  } else {
-    header.classList.remove("hidden"); // Always visible on larger screens
-  }
-
-  lastScrollTop = scrollTop;
-});
