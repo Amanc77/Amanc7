@@ -16,7 +16,7 @@
   --title-color: hsl(var(--hue-color), 8%, 15%);
   --text-color: hsl(var(--hue-color), 10%, 45%);
   --input-color: hsl(var(--hue-color), 70%, 96%);
-  --body-color: #030712;
+  --body-color: #09122b;
   --container-color: #fff;
 
   --big-font-size: 2rem;
@@ -131,10 +131,14 @@ img {
 .header {
   width: 100%;
   position: fixed;
-  bottom: 0;
   left: 0;
+  top: 0;
   z-index: var(--z-fixed);
-  background-color: lavender;
+  background-color: transparent;
+  transition: top 0.3s; /* Smooth hide/show effect */
+}
+.hidden {
+  top: -100px; /* Move header out of view */
 }
 
 .nav {
@@ -1172,4 +1176,35 @@ svg#freepik_stories-questions.animated #freepik--speech-bubble--inject-4 {
     margin-left: var(--mb-2-5);
     z-index: 1;
   }
+}
+
+.contact__form {
+  background-color: #514e69;
+  height: 95%;
+}
+
+.contact__input input,
+.contact__input textarea {
+  background-color: #191f30;
+  color: white;
+  border: 1px solid #666;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: #fff;
+  font-style: oblique;
+}
+.button {
+  background-color: #030712;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #1a1a2e;
 }
