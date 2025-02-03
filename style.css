@@ -9,15 +9,15 @@
 :root {
   --hue-color: 250;
   --header-height: 3rem;
-  --first-color: hsl(var(--hue-color), 69%, 61%);
-  --first-color-second: hsl(var(--hue-color), 69%, 61%);
-  --first-color-alt: hsl(var(--hue-color), 57%, 53%);
-  --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
-  --title-color: hsl(var(--hue-color), 8%, 15%);
-  --text-color: hsl(var(--hue-color), 10%, 45%);
-  --input-color: hsl(var(--hue-color), 70%, 96%);
-  --body-color: hsl(var(--hue-color), 60%, 99%);
-  --container-color: #fff;
+  --first-color: #8a5cf7;
+  --first-color-second: #4004cc;
+  --first-color-alt: #7859aa;
+  --first-color-lighter: #a699b4;
+  --title-color: #f6f3f8;
+  --text-color: #ddcfcf;
+  --input-color: #eae7f3;
+  --body-color: #030712;
+  --container-color: #ffffff;
 
   --big-font-size: 2rem;
   --h1-font-size: 1.5rem;
@@ -131,10 +131,14 @@ img {
 .header {
   width: 100%;
   position: fixed;
-  bottom: 0;
   left: 0;
+  top: 0;
   z-index: var(--z-fixed);
-  background-color: lavender;
+  background-color: transparent;
+  transition: top 0.3s; /* Smooth hide/show effect */
+}
+.hidden {
+  top: -100px; /* Move header out of view */
 }
 
 .nav {
@@ -163,6 +167,9 @@ img {
   cursor: pointer;
 }
 
+.nav .container {
+  background-color: transparent;
+}
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
@@ -170,7 +177,7 @@ img {
     left: 0;
     width: 100%;
     padding: 2rem 1.5rem 4rem;
-    background-color: var(--body-color);
+    background-color: transparent;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     transform: translateY(-100%);
     transition: 0.3s;
@@ -751,7 +758,8 @@ svg#freepik_stories-questions.animated #freepik--speech-bubble--inject-4 {
   justify-content: space-around;
   color: #fff;
   width: 100%;
-  background-color: #8878f1;
+  height: 18%;
+  background-color: #191f30;
   padding: 1rem;
   padding-bottom: 5rem;
   position: absolute;
@@ -1029,7 +1037,7 @@ svg#freepik_stories-questions.animated #freepik--speech-bubble--inject-4 {
     top: 0;
     bottom: initial;
     padding: 0 1.5rem;
-    background-color: rgba(206, 190, 250, 0.605);
+    background-color: rgba(206, 190, 250, 0.1);
   }
   .home__img {
     margin-bottom: 4rem;
@@ -1172,4 +1180,68 @@ svg#freepik_stories-questions.animated #freepik--speech-bubble--inject-4 {
     margin-left: var(--mb-2-5);
     z-index: 1;
   }
+}
+
+.contact__form {
+  background-color: #514e69;
+  height: 95%;
+}
+
+.contact__input input,
+.contact__input textarea {
+  background-color: #191f30;
+  color: white;
+  border: 1px solid #666;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+::placeholder {
+  color: #fff;
+  font-style: oblique;
+}
+.button {
+  background-color: #030712;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #1a1a2e;
+}
+
+a:hover {
+  scale: 1.1;
+}
+
+.footer__socials {
+  text-align: center;
+}
+
+.footer__socials p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer_icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer__socials-icon {
+  font-size: 30px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.footer__socials-icon:hover {
+  color: #0073b1; /* LinkedIn blue */
+}
+
+.footer_icons a {
+  text-decoration: none;
 }
