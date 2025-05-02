@@ -75,7 +75,7 @@ window.addEventListener("scroll", scrollUp);
 const themeButton = document.getElementById("theme-button");
 const circle = document.querySelector("#theme-button .circle");
 
-if (themeButton) {
+if (themeButton ) {
   themeButton.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme");
     themeButton.classList.toggle("active");

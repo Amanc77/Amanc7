@@ -61,13 +61,13 @@ body {
   margin: 0 0 var(--header-height) 0;
   font-family: "Poppins", sans-serif;
   font-size: 18px;
-  background-color: var(--body-color);
+  background-color: rgba(34, 34, 59, 0.821);
   color: var(--text-color);
   overflow-x: hidden;
 }
 
 .dark-theme {
-  background-color: rgba(34, 34, 59, 0.821);
+  background-color: var(--body-color);
   color: rgba(255, 255, 255, 0.799);
   --title-color: rgba(255, 255, 255, 0.799);
   --text-color: hsl(var(--hue-color), 10%, 75%);
