@@ -69,6 +69,33 @@
       <section class="home layer0 section" id="home">
         <div class="home__container container grid">
           <div class="home__content grid">
+            <!-- Social Links -->
+            <div class="home__social">
+              <a
+                href="https://www.linkedin.com/in/amanc77/"
+                target="_blank"
+                rel="noopener"
+                class="home__social-icon"
+                title="LinkedIn"
+                ><i class="uil uil-linkedin-alt"></i
+              ></a>
+              <a
+                href="https://github.com/AmanC77"
+                target="_blank"
+                rel="noopener"
+                class="home__social-icon"
+                title="GitHub"
+                ><i class="uil uil-github-alt"></i
+              ></a>
+              <a
+                href="https://x.com/Amanc77"
+                target="_blank"
+                rel="noopener"
+                class="home__social-icon"
+                title="Twitter"
+                ><i class="uil uil-twitter-alt"></i
+              ></a>
+            </div>
             <!-- Profile Image SVG -->
             <div class="home__img">
               <svg
@@ -84,7 +111,13 @@
                 </mask>
                 <g mask="url(#mask0)">
                   <path
-                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
+                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826
+                  182.328 134.186C163.346 165.547 130.807 187.559 100.226
+                  186.353C69.6454 185.297 41.0228 161.023 21.7403
+                  129.362C2.45775 97.8511 -7.48481 59.1033 6.67581
+                  34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
+                  0.00163737C136.23 0.303176 174.193 10.857
+                  190.312 36.4879Z"
                   />
                   <image
                     class="home__blob-img"
@@ -106,8 +139,8 @@
               <a
                 href="https://drive.google.com/file/d/1kTurduTO-WnmfVA8p52eU3qGnoic3bFf/view?usp=sharing"
                 target="_blank"
+                class="button button--flex"
                 rel="noopener"
-                class="ResumeButton button--flex"
               >
                 Open Resume <i class="uil uil-folder-open button__icon"></i>
               </a>
@@ -122,7 +155,6 @@
           </div>
         </div>
       </section>
-
       <!-- About Section -->
       <section class="about section" id="about">
         <h2 class="section__title">About Me</h2>
@@ -627,8 +659,23 @@
         </div>
       </div>
     </footer>
-
-    <!-- Typed.js for Type Animation -->
+    <script>
+      var options = {
+        strings: ["FullStack Developer.", "Coder...", "Software Developer"],
+        typeSpeed: 50,
+        showCursor: false,
+        loop: true,
+      };
+      var typed = new Typed("#typed", options);
+    </script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        window.setTimeout(
+          document.querySelector("svg").classList.add("animated"),
+          1000
+        );
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

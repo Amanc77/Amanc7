@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section[id]");
   const form = document.getElementById("form");
 
-  // Toggle menu
+  // Toggle nav menu
   navToggle?.addEventListener("click", () =>
     navMenu.classList.add("show-menu")
   );
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navMenu.classList.remove("show-menu")
   );
 
-  // Close menu on nav link click
+  // Hide nav menu on link click
   document
     .querySelectorAll(".nav__link")
     .forEach((link) =>
@@ -26,76 +26,115 @@ document.addEventListener("DOMContentLoaded", () => {
       )
     );
 
-  // Intersection Observer for qualifications animation
-  const observer = new IntersectionObserver((entries) =>
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("show");
-    })
+  // Intersection observer for animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    },
+    { threshold: 0.1 }
   );
   document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
 
-  // Scroll-related functionality
+  // Scroll behavior
   let lastScrollTop = 0;
   window.addEventListener("scroll", () => {
     const scrollY = window.scrollY;
     const isMobile = window.innerWidth <= 768;
 
-    // Header scroll behavior
+    // Change header bg on scroll
     if (scrollY >= 80) header.classList.add("scroll-header");
     else header.classList.remove("scroll-header");
 
-    // Scroll top button
-    if (scrollY >= 560) scrollTop.classList.add("show-scroll");
-    else scrollTop.classList.remove("show-scroll");
+    // Show or hide scroll up button
+    if (scrollTop) {
+      if (scrollY >= 560) scrollTop.classList.add("show-scroll");
+      else scrollTop.classList.remove("show-scroll");
+    }
 
-    // Hide header on scroll down (mobile only)
+    // Hide header on scroll down mobile
     if (isMobile) {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) header.classList.add("hidden");
-      else if (scrollTop === 0) header.classList.remove("hidden");
-      lastScrollTop = scrollTop;
+      const st = window.scrollY || document.documentElement.scrollTop;
+      if (st > lastScrollTop) header.classList.add("hidden");
+      else if (st <= 0) header.classList.remove("hidden");
+      lastScrollTop = st <= 0 ? 0 : st;
     } else {
       header.classList.remove("hidden");
     }
 
-    // Active link on scroll
+    // Highlight active link
     sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 60;
       const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 50;
       const sectionId = section.getAttribute("id");
-      document
-        .querySelector(`.nav__menu a[href*=${sectionId}]`)
-        ?.classList.toggle(
-          "active-link",
-          scrollY > sectionTop && scrollY <= sectionTop + sectionHeight
+
+      const navLinks = document.querySelectorAll(".nav__link");
+      navLinks.forEach((link) => link.classList.remove("active-link"));
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        const activeLink = document.querySelector(
+          `.nav__list a[href="#${sectionId}"]`
         );
+        if (activeLink) activeLink.classList.add("active-link");
+      }
     });
   });
 
-  // Theme toggle
+  // Theme initialization
+  function initTheme() {
+    const selectedTheme = localStorage.getItem("selected-theme");
+    const localTheme = selectedTheme
+      ? selectedTheme
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+    if (localTheme === "dark") {
+      document.body.classList.add("dark-theme");
+      themeButton.classList.add("active");
+      circle.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark-theme");
+      themeButton.classList.remove("active");
+      circle.classList.remove("dark");
+    }
+  }
+  initTheme();
+
+  // Theme toggle button
   if (themeButton) {
-    document.body.classList.add("dark-theme");
-    themeButton.classList.add("active");
     themeButton.addEventListener("click", () => {
       document.body.classList.toggle("dark-theme");
       themeButton.classList.toggle("active");
       circle.classList.toggle("dark");
+
+      const currentTheme = document.body.classList.contains("dark-theme")
+        ? "dark"
+        : "light";
+      localStorage.setItem("selected-theme", currentTheme);
     });
   }
 
-  // Form submission
-  form?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-      });
-      const data = await response.json();
-      alert("Message sent successfully!");
-      form.reset();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  });
+  // Contact form submission
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+        });
+        if (response.ok) {
+          alert("Message sent successfully!");
+          form.reset();
+        } else {
+          alert("Oops! Something went wrong.");
+        }
+      } catch (error) {
+        alert("Oops! Something went wrong.");
+        console.error(error);
+      }
+    });
+  }
 });
